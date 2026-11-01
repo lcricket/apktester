@@ -24,7 +24,7 @@
         <div class="bg-white p-8 rounded-xl shadow-2xl text-center max-w-sm w-full">
             <div class="bg-blue-600 text-white w-16 h-16 rounded-xl font-bold text-4xl flex items-center justify-center mx-auto mb-4">⇗</div>
             <h2 class="text-2xl font-bold mb-2">AppTester Community</h2>
-            <p class="text-gray-500 mb-6 text-sm">Login to test apps and get 20 real testers for your 14-days test.</p>
+            <p class="text-gray-500 mb-6 text-sm">Login to test apps, earn credits, or buy credits to get 20 testers.</p>
             <button id="googleLoginBtn" class="w-full bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-3 transition shadow-sm">
                 <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5" alt="Google">
                 Sign in with Google
@@ -37,15 +37,15 @@
         <div class="bg-white p-8 rounded-xl shadow-2xl max-w-sm w-full relative">
             <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 font-bold text-2xl transition">&times;</button>
             <h2 class="text-2xl font-bold mb-2 text-center">Buy Credits</h2>
-            <p class="text-gray-500 mb-6 text-sm text-center">Pay manually via UPI and send the screenshot on WhatsApp to get credits instantly.</p>
+            <p class="text-gray-500 mb-6 text-sm text-center">Pay manually and send the screenshot on WhatsApp to get credits instantly.</p>
             
             <div class="space-y-4 mb-6">
                 <div class="border border-gray-200 rounded-lg p-4 flex justify-between items-center bg-gray-50">
                     <div>
                         <p class="font-bold text-lg text-gray-800">20 Credits</p>
-                        <p class="text-xs text-gray-500">For 2 app tests</p>
+                        <p class="text-xs text-gray-500">For 1 app test</p>
                     </div>
-                    <p class="font-bold text-green-600 text-lg">₹500</p>
+                    <p class="font-bold text-green-600 text-lg">৳500</p>
                 </div>
                 <div class="border border-blue-300 rounded-lg p-4 flex justify-between items-center bg-blue-50 relative overflow-hidden">
                     <div class="absolute top-0 right-0 bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">POPULAR</div>
@@ -53,7 +53,7 @@
                         <p class="font-bold text-lg text-blue-900">50 Credits</p>
                         <p class="text-xs text-blue-600">Best Value Package</p>
                     </div>
-                    <p class="font-bold text-green-600 text-lg">₹1000</p>
+                    <p class="font-bold text-green-600 text-lg">৳1000</p>
                 </div>
             </div>
 
@@ -184,7 +184,7 @@
                 return;
             }
             const phoneNumber = "917980735754";
-            const text = `Hi Admin, I want to buy AppTester Credits.\n\nHere are my details:\n*Name:* ${currentUser.displayName}\n*Email:* ${currentUser.email}\n*User ID:* ${currentUser.uid}\n\nPlease share your payment QR Code/UPI ID.`;
+            const text = `Hi Admin, I want to buy AppTester Credits.\n\nHere are my details:\n*Name:* ${currentUser.displayName}\n*Email:* ${currentUser.email}\n*User ID:* ${currentUser.uid}\n\nPlease share your payment details.`;
             const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
             window.open(waUrl, '_blank');
         });
@@ -203,7 +203,7 @@
                     await setDoc(userRef, {
                         name: user.displayName,
                         email: user.email,
-                        credits: 20,
+                        credits: 0, // নতুন ইউজাররা ০ ক্রেডিট নিয়ে শুরু করবে
                         joinedAt: serverTimestamp()
                     });
                 }
